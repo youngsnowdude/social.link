@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Daniil Agafonov | Соцсети</title>
+    <!-- Метатеги для красивого превью в мессенджерах -->
+    <meta name="description" content="Все мои соцсети в одном месте: Telegram, Twitch, Instagram, TikTok, YouTube, Discord">
+    <meta property="og:title" content="Daniil Agafonov">
+    <meta property="og:description" content="Мои соцсети — подписывайся">
+    <meta property="og:type" content="website">
+    <!-- Font Awesome 6 (иконки) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            /* Тёмно-синий градиентовый фон — от ночного неба до глубокой синевы */
+            background: linear-gradient(135deg, #0a0f2a 0%, #0b1a3a 30%, #0a1030 100%);
+            font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 550px;
+            width: 100%;
+            background: rgba(15, 25, 45, 0.55);
+            backdrop-filter: blur(10px);
+            border-radius: 56px;
+            padding: 40px 28px 50px;
+            text-align: center;
+            border: 1px solid rgba(72, 120, 184, 0.3);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(58, 110, 180, 0.1) inset;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.01);
+        }
+
+        /* Главное имя — по центру, крупно */
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(120deg, #eef2ff, #b9d0f0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Никнейм — мелким шрифтом, но читаемо */
+        .nickname {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #8aa9d6;
+            background: rgba(0, 0, 0, 0.35);
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+            margin-bottom: 40px;
+            letter-spacing: 0.3px;
+            border: 0.5px solid #2c4c7c;
+        }
+
+        /* Сетка для кнопок */
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Общий стиль кнопок */
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            background: rgba(10, 20, 35, 0.8);
+            backdrop-filter: blur(4px);
+            padding: 16px 20px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: 0.2s all;
+            border: 1px solid rgba(70, 130, 200, 0.4);
+            color: #eef5ff;
+        }
+
+        .social-btn i {
+            font-size: 1.7rem;
+            width: 32px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .social-btn span {
+            flex: 1;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        /* Ховеры + цветные акценты */
+        .social-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(20, 40, 65, 0.9);
+            border-color: #5d9eff;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+        }
+
+        .social-btn:hover i {
+            transform: scale(1.05);
+        }
+
+        /* Кастомные цвета для иконок при ховере (можно переделать) */
+        .social-btn.telegram:hover i { color: #26A5E4; text-shadow: 0 0 5px #26A5E4; }
+        .social-btn.twitch:hover i { color: #9146FF; text-shadow: 0 0 5px #9146FF; }
+        .social-btn.instagram:hover i { color: #E4405F; text-shadow: 0 0 5px #E4405F; }
+        .social-btn.tiktok:hover i { color: #69C9D0; text-shadow: 0 0 5px #69C9D0; }
+        .social-btn.youtube:hover i { color: #FF0000; text-shadow: 0 0 5px #FF0000; }
+        .social-btn.discord:hover i { color: #5865F2; text-shadow: 0 0 5px #5865F2; }
+
+        /* Подвал с копирайтом */
+        .footer-note {
+            margin-top: 35px;
+            font-size: 0.7rem;
+            color: #4d6a93;
+            border-top: 1px dashed #2c4870;
+            padding-top: 20px;
+        }
+
+        /* Мобильная адаптация */
+        @media (max-width: 520px) {
+            .card {
+                padding: 30px 18px 40px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .nickname {
+                font-size: 0.85rem;
+                margin-bottom: 30px;
+            }
+            .social-btn {
+                padding: 12px 16px;
+                font-size: 1rem;
+            }
+            .social-btn i {
+                font-size: 1.4rem;
+                width: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- Daniil Agafonov по центру сверху -->
+        <h1>Daniil Agafonov</h1>
+        
+        <!-- Маленький шрифт @youngsnowdude -->
+        <div class="nickname">@youngsnowdude</div>
+
+        <!-- Кнопки соцсетей -->
+        <div class="links-grid">
+            <!-- Telegram -->
+            <a href="#" class="social-btn telegram" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-telegram-plane"></i>
+                <span>Telegram</span>
+                <i class="fas fa-arrow-right" style="font-size: 1rem; opacity: 0.7;"></i>
+            </a>
+            <!-- Twitch -->
+            <a href="#" class="social-btn twitch" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-twitch"></i>
+                <span>Twitch</span>
+                <i class="fas fa-arrow-right" style="font-size: 1rem; opacity: 0.7;"></i>
+            </a>
+            <!-- Instagram -->
+            <a href="#" class="social-btn instagram" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+                <i class="fas fa-arrow-right" style="font-size: 1rem; opacity: 0.7;"></i>
+            </a>
+            <!-- TikTok -->
+            <a href="#" class="social-btn tiktok" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-tiktok"></i>
+                <span>TikTok</span>
+                <i class="fas fa-arrow-right" style="font-size: 1rem; opacity: 0.7;"></i>
+            </a>
+            <!-- YouTube -->
+            <a href="#" class="social-btn youtube" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-youtube"></i>
+                <span>YouTube</span>
+                <i class="fas fa-arrow-right" style="font-size: 1rem; opacity: 0.7;"></i>
+            </a>
+            <!-- Discord -->
+            <a href="#" class="social-btn discord" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-discord"></i>
+                <span>Discord</span>
+                <i class="fas fa-arrow-right" style="font-size: 1rem; opacity: 0.7;"></i>
+            </a>
+        </div>
+        <div class="footer-note">
+            все ссылки настоящие • @youngsnowdude
+        </div>
+    </div>
+</body>
+</html>
