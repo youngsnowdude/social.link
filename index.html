@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Young man | Соцсети</title>
     <!-- Метатеги для красивого превью в мессенджерах -->
-    <meta name="description" content="Все мои соцсети в одном месте: Telegram, Twitch, Instagram, TikTok, YouTube, Discord">
-    <meta property="og:title" content="Daniil Agafonov">
+    <meta name="description" content="Все мои соцсети в одном месте: Telegram, Twitch, Instagram, TikTok, YouTube, Discord, VK">
+    <meta property="og:title" content="Young man">
     <meta property="og:description" content="Мои соцсети — подписывайся">
     <meta property="og:type" content="website">
     <!-- Font Awesome 6 (иконки) -->
@@ -18,27 +18,48 @@
             box-sizing: border-box;
         }
 
-    body {
+        /* ОСНОВНОЙ ФОН: Твоя картинка вместо градиента */
+        body {
             min-height: 100vh;
-            /* Тёмно-синий градиентовый фон — от ночного неба до глубокой синевы */
-            background: linear-gradient(135deg, #0a0f2a 0%, #0b1a3a 30%, #0a1030 100%);
+            /* ЗАМЕНИ 'background.jpg' на свою фотку */
+                background-image: url('https://pin.it/3JPKfYGNT');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            position: relative;
+        }
+
+        /* Затемняющий слой поверх фона, чтобы текст читался */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65); /* регулируй прозрачность */
+            z-index: 0;
+            pointer-events: none;
         }
 
         .card {
+            position: relative;
+            z-index: 1;
             max-width: 550px;
             width: 100%;
-            background: rgba(15, 25, 45, 0.55);
+            background: rgba(15, 25, 45, 0.65);
             backdrop-filter: blur(10px);
             border-radius: 56px;
             padding: 40px 28px 50px;
             text-align: center;
-            border: 1px solid rgba(72, 120, 184, 0.3);
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(58, 110, 180, 0.1) inset;
+            border: 1px solid rgba(72, 120, 184, 0.4);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
             transition: transform 0.2s ease;
         }
 
@@ -46,7 +67,26 @@
             transform: scale(1.01);
         }
 
-        /* Главное имя — по центру, крупно */
+        /* АВАТАРКА — круглое фото */
+        .avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            background: #2c3e50;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Главное имя */
         h1 {
             font-size: 2.8rem;
             font-weight: 700;
@@ -59,12 +99,12 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* Никнейм — мелким шрифтом, но читаемо */
+        /* Никнейм */
         .nickname {
             font-size: 1rem;
             font-weight: 400;
             color: #8aa9d6;
-            background: rgba(0, 0, 0, 0.35);
+            background: rgba(0, 0, 0, 0.45);
             display: inline-block;
             padding: 6px 20px;
             border-radius: 60px;
@@ -113,10 +153,9 @@
             font-weight: 500;
         }
 
-        /* Ховеры + цветные акценты */
         .social-btn:hover {
             transform: translateY(-3px);
-            background: rgba(20, 40, 65, 0.9);
+            background: rgba(20, 40, 65, 0.95);
             border-color: #5d9eff;
             box-shadow: 0 8px 18px rgba(0,0,0,0.3);
         }
@@ -125,19 +164,34 @@
             transform: scale(1.05);
         }
 
-        /* Кастомные цвета для иконок при ховере (можно переделать) */
+        /* Цветные акценты при ховере */
         .social-btn.telegram:hover i { color: #26A5E4; text-shadow: 0 0 5px #26A5E4; }
         .social-btn.twitch:hover i { color: #9146FF; text-shadow: 0 0 5px #9146FF; }
         .social-btn.instagram:hover i { color: #E4405F; text-shadow: 0 0 5px #E4405F; }
         .social-btn.tiktok:hover i { color: #69C9D0; text-shadow: 0 0 5px #69C9D0; }
         .social-btn.youtube:hover i { color: #FF0000; text-shadow: 0 0 5px #FF0000; }
         .social-btn.discord:hover i { color: #5865F2; text-shadow: 0 0 5px #5865F2; }
+        .social-btn.vk:hover i { color: #4680C2; text-shadow: 0 0 5px #4680C2; }
 
-        /* Подвал с копирайтом */
+        /* Специальная кнопка для скачивания файла */
+        .download-btn {
+            background: rgba(30, 50, 70, 0.9);
+            border-color: #f5af19;
+            margin-top: 10px;
+        }
+        .download-btn:hover {
+            background: rgba(50, 70, 90, 0.95);
+            border-color: #ffcc33;
+        }
+        .download-btn i {
+            color: #f5af19;
+        }
+
+        /* Подвал */
         .footer-note {
             margin-top: 35px;
             font-size: 0.7rem;
-            color: #4d6a93;
+            color: #b0c4de;
             border-top: 1px dashed #2c4870;
             padding-top: 20px;
         }
@@ -146,6 +200,11 @@
         @media (max-width: 520px) {
             .card {
                 padding: 30px 18px 40px;
+            }
+            .avatar {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 15px;
             }
             h1 {
                 font-size: 2rem;
@@ -167,10 +226,15 @@
 </head>
 <body>
     <div class="card">
-        <!-- Young man по центру сверху -->
+        <!-- АВАТАРКА: вставь ссылку на своё фото вместо "avatar.jpg" -->
+        <div class="avatar">
+            <img src="avatar.jpg" alt="Young man">
+        </div>
+
+        <!-- Имя -->
         <h1>Young man</h1>
         
-        <!-- Маленький шрифт @youngsnowdude -->
+        <!-- Ник -->
         <div class="nickname">@youngsnowdude</div>
 
         <!-- Кнопки соцсетей -->
@@ -211,7 +275,23 @@
                 <span>Discord</span>
                 <i class="fas fa-arrow-right" style="font-size: 1rem; opacity: 0.7;"></i>
             </a>
+            <!-- VK (добавлено) -->
+            <a href="https://vk.com/youngsnowdude" class="social-btn vk" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-vk"></i>
+                <span>VK</span>
+                <i class="fas fa-arrow-right" style="font-size: 1rem; opacity: 0.7;"></i>
+            </a>
         </div>
+
+        <!-- Блок скачивания файла "Optimization для пк" -->
+        <div class="links-grid" style="margin-top: 10px;">
+            <a href="#" class="social-btn download-btn" download>
+                <i class="fas fa-download"></i>
+                <span>Скачать Optimization для ПК</span>
+                <i class="fas fa-file-archive" style="font-size: 1rem; opacity: 0.7;"></i>
+            </a>
+        </div>
+
         <div class="footer-note">
             young man • @youngsnowdude
         </div>
