@@ -1,4 +1,4 @@
-git clone https://github.com/your-username/steam-hour-boost-telegram.git
+git clone https://github.com/youngsnowdude/steam-hour-boost-telegram.git
 cd steam-hour-boost-telegram
 npm install
 npm run build
